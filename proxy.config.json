@@ -1,0 +1,7 @@
+{
+    "/api" : {
+        "target": "https://timeapi.io",
+        "secure" : false,
+        "logLevel" : "debug"
+    }
+}

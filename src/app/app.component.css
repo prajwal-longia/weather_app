@@ -134,6 +134,10 @@
   margin: 3em 0;
 }
 
+.condition {
+  text-transform: capitalize;
+}
+
 .city {
   display: block;
   cursor: pointer;
