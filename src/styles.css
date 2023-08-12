@@ -1,137 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-:root {
-  --blue-1: #3c429e;
-  --blue-2: #4c52ad;
-  --yellow-1: #fac742;
-  --grey-1: #ededed;
-  --shadow-dark: rgba(0, 0, 0, 0.3);
-  --shadow-light: rgba(255, 255, 255, 0.1);
+body {
+  margin: 0;
+  font-family: "Rubik", Helvetica, sans-serif;
+  background: #111;
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(27, 27, 26, 0.925);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.container {
-  width: 400px;
-  height: 80vh;
-  background-color: var(--blue-2);
-  border-radius: 25px;
-  box-shadow: 5px 5px 5px var(--shadow-dark);
-}
-
-.bg-img {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-}
-
-.bg-img img {
-  position: absolute;
-  object-fit: cover;
-  backdrop-filter: blur(5px);
-}
-
-.glass {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-right: 2px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: saturate(180%) blur(5px);
-}
-
-.upper-data {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 50%;
-  border-radius: 25px 25px 0px 0px;
-}
-
-.weather-data {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background-color: var(--shadow-dark);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.location {
-  color: white;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-.temperature {
-  color: white;
-  font-size: 4em;
-  text-align: center;
-  font-weight: 700;
-}
-
-.more-info-label {
-  color: white;
-}
-
-.more-info-container {
-  flex: 1;
-  background-color: var(--shadow-light);
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  margin-top: 1em;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.info-block {
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-}
-
-.info-block-label {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.info-block-label img {
-  width: 5em;
-}
-.info-block-label span {
-  color: white;
-  font-size: 0.8em;
-}
-
-.info-block-value {
-  width: 50%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  color: white;
+h1,
+h3 {
+  font-weight: 400;
 }

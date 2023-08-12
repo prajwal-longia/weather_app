@@ -1,27 +1,57 @@
-<div class="container">
-  <div class="bg-img">
-    <img src="../assets/day_bg.jpg" *ngIf="14 > 15" alt="" />
-    <img src="../assets/night_sky.jpg" *ngIf="14 <= 15" alt="" />
-    <div class="container glass"></div>
-    <div class="upper-data">
-      <div class="weather-data">
-        <div class="location">Jamshedpur</div>
-        <div class="temperature">{{ 14.4 | number : "1.0-0" }}°C</div>
+<div class="weather-app">
+  <div class="container">
+    <h3 class="brand">Weather App</h3>
+    <div>
+      <h1 class="temp">16&#176;</h1>
+      <div class="city-time">
+        <h1 class="name">London</h1>
+        <span class="time">06:09</span>
+        -
+        <span class="date">Saturday Aug 12</span>
       </div>
-    </div>
-    <div class="lower-data">
-      <div class="more-info-label">
-        <div class="more-info-container">
-          <div class="info-block">
-            <div class="info-block-label">
-              <img src="../assets/weather_icons/cold.png" alt="" />
-              <span>min</span>
-            </div>
-            <div class="info-block-value">10°C</div>
-          </div>
-        </div>
+      <div class="weather">
+        <img
+          src="../assets/weather_icons/cloudy_sun.png"
+          alt=""
+          width="50"
+          height="50"
+        />
+        <span class="condition">Cloudy</span>
       </div>
     </div>
   </div>
+  <div class="panel">
+    <form id="locationInput">
+      <input
+        type="text"
+        class="search"
+        placeholder="Location"
+        name="location"
+      />
+      <button type="submit" class="submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
+    <ul class="cities">
+      <li class="city">New York</li>
+      <li class="city">California</li>
+      <li class="city">Tokyo</li>
+      <li class="city">New Delhi</li>
+    </ul>
+    <ul class="details">
+      <h4>Weather Details</h4>
+      <li>
+        <span>Cloudy</span>
+        <span class="cloud">89%</span>
+      </li>
+      <li>
+        <span>Humidity</span>
+        <span class="humidity">64%</span>
+      </li>
+      <li>
+        <span>Wind</span>
+        <span class="wind">8 Km/H</span>
+      </li>
+    </ul>
+  </div>
 </div>
-<router-outlet></router-outlet>
