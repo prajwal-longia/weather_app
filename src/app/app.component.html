@@ -21,7 +21,12 @@
     </div>
   </div>
   <div class="panel">
-    <form id="locationInput" #search="ngForm">
+    <form
+      id="locationInput"
+      #search="ngForm"
+      [(ngModel)]="location"
+      (submit)="onSubmit()"
+    >
       <input
         type="text"
         class="search"
