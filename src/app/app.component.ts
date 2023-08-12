@@ -19,6 +19,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
       this.weatherService.getWeather(this.location);
+      this.location = '';
   }
 
   onSubmit(){
