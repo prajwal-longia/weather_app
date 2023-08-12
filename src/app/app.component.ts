@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, NgForm } from '@angular/forms';
+import { WeatherService } from './services/weather.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Weather App';
+  constructor(private weatherService:WeatherService){
+
+  }
+  onGetWeather(form:NgForm){
+    if(form.invalid){
+      return;
+    }
+    this.weatherService.getWeather(form.value.location);
+  }
+
 }
