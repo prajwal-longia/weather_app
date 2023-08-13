@@ -25,7 +25,7 @@ export class AppComponent implements OnInit{
   sunset?: string;
   unixSunrise?: Date;
   unixSunset?: Date;
-  conditionImageUrl = "../assets/weather_icons/cloudy_sun.png"
+  conditionImageUrl = "../assets/weather_icons/01d.png"
   isDay = true;
   constructor(private weatherService:WeatherService){
 
@@ -57,19 +57,20 @@ export class AppComponent implements OnInit{
         this.getMonthName(this.dateTime.month);
         this.time = this.timeFormater(this.dateTime.hour, this.dateTime.minute);
         this.checkDay();
-/*         this.getImageUrl(this.description!.id);
- */        console.log(response);
+        this.getImageUrl(this.description!.icon);
+        console.log(response);
       }
     });
     
   }
 
-  getImageUrl(id:number){
-    if( this.between(this.dateTime!.hour, 0, this.unixSunrise!.getHours()-1) || this.between(this.dateTime!.hour,this.unixSunset!.getHours(),23) ){
+  getImageUrl(id:string){
+    /* if( this.between(this.dateTime!.hour, 0, this.unixSunrise!.getHours()-1) || this.between(this.dateTime!.hour,this.unixSunset!.getHours(),23) ){
       this.conditionImageUrl = `../assets/weather_icons/${id}n.png`
       return;
     }
-    this.conditionImageUrl = `../assets/weather_icons/${id}d.png`
+    this.conditionImageUrl = `../assets/weather_icons/${id}d.png` */
+    this.conditionImageUrl = `../assets/weather_icons/${id}.png`
     return;
   }
 
