@@ -5,19 +5,14 @@
       <h1 class="temp">{{ weatherData.main.temp | number : "1.0-0" }}&#176;</h1>
       <div class="city-time">
         <h1 class="name">{{ weatherData.name }}</h1>
-        <span class="time">{{ dateTime?.hour }}:{{ dateTime?.minute }}</span>
+        <span class="time">{{ time }}</span>
         -
         <span class="date"
           >{{ dateTime?.dayOfWeek }} {{ month }} {{ dateTime?.day }}</span
         >
       </div>
       <div class="weather">
-        <img
-          src="../assets/weather_icons/cloudy_sun.png"
-          alt=""
-          width="50"
-          height="50"
-        />
+        <img src="{{ conditionImageUrl }}" alt="" width="50" height="50" />
         <span class="condition">{{ description?.description }}</span>
       </div>
     </div>
@@ -41,19 +36,27 @@
       <li class="city">Tokyo</li>
       <li class="city">New Delhi</li>
     </ul>
-    <ul class="details">
+    <ul class="details" *ngIf="weatherData">
       <h4>Weather Details</h4>
       <li>
-        <span>{{ description?.main }}</span>
-        <span class="cloud">{{ weatherData?.clouds?.all }}%</span>
+        <span>Cloud</span>
+        <span class="cloud">{{ weatherData!.clouds.all }}%</span>
       </li>
       <li>
         <span>Humidity</span>
-        <span class="humidity">{{ weatherData?.main?.humidity }}%</span>
+        <span class="humidity">{{ weatherData!.main.humidity }}%</span>
       </li>
       <li>
         <span>Wind</span>
-        <span class="wind">{{ weatherData?.wind?.speed }}M/s</span>
+        <span class="wind">{{ weatherData!.wind.speed }} M/s</span>
+      </li>
+      <li>
+        <span>Sunrise</span>
+        <span class="sunrise">{{ sunrise }}</span>
+      </li>
+      <li>
+        <span>Sunset</span>
+        <span class="sunset">{{ sunset }}</span>
       </li>
     </ul>
   </div>

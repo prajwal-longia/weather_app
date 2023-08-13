@@ -20,6 +20,13 @@ export class AppComponent implements OnInit{
   long = '';
   date?: DateFormat;
   month?: string;
+  time?: string;
+  sunrise?: string;
+  sunset?: string;
+  unixSunrise?: Date;
+  unixSunset?: Date;
+  conditionImageUrl = "../assets/weather_icons/cloudy_sun.png"
+  isDay = true;
   constructor(private weatherService:WeatherService){
 
   }
@@ -47,18 +54,24 @@ export class AppComponent implements OnInit{
     .subscribe({
       next: (response) => {
         this.dateTime = response;
-       /*  this.date = {
-          day: String(this.dateTime.day),
-          month: String(this.dateTime.month),
-          year: String(this.dateTime.year)
-        };
-        const date = new Date(`${this.date.year}-${this.date.month}-${this.date.day}`); */
-        this.getMonthName(this.dateTime.month)
-        console.log(response);
+        this.getMonthName(this.dateTime.month);
+        this.time = this.timeFormater(this.dateTime.hour, this.dateTime.minute);
+        this.checkDay();
+/*         this.getImageUrl(this.description!.id);
+ */        console.log(response);
       }
-    })
+    });
+    
   }
 
+  getImageUrl(id:number){
+    if( this.between(this.dateTime!.hour, 0, this.unixSunrise!.getHours()-1) || this.between(this.dateTime!.hour,this.unixSunset!.getHours(),23) ){
+      this.conditionImageUrl = `../assets/weather_icons/${id}n.png`
+      return;
+    }
+    this.conditionImageUrl = `../assets/weather_icons/${id}d.png`
+    return;
+  }
 
   onGetWeather(location: string){
     this.weatherService.getWeather(location)
@@ -69,8 +82,27 @@ export class AppComponent implements OnInit{
         this.lat = String(response.coord.lat);
         this.long = String(response.coord.lon);
         this.onGetTime(this.lat,this.long);
+        this.unixSunrise = new Date(this.weatherData.sys.sunrise * 1000);
+        this.unixSunset = new Date(this.weatherData.sys.sunset * 1000);
+        this.sunrise = this.timeFormater(this.unixSunrise.getHours(),this.unixSunrise.getMinutes());
+        this.sunset = this.timeFormater(this.unixSunset.getHours(),this.unixSunset.getMinutes())
         console.log(response);
       }
     })
 }
+timeFormater(H:number,M:number){
+  return  `${(H%12<10?'0':'')+H%12}:${(M<10?'0':'')+M} ${H<12?'AM':'PM'}`;
+}
+
+between (x:number, min:number, max:number) {
+  return x >= min && x <= max;
+};
+
+checkDay(){
+  if (this.between(this.dateTime!.hour ,this.unixSunrise!.getHours()-1, this.unixSunset!.getHours())){
+    this.isDay = false;
+  }
+  return;
+}
+
 }
