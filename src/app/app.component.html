@@ -1,7 +1,7 @@
 <div class="weather-app">
   <div class="container">
     <h3 class="brand">Weather App</h3>
-    <div *ngIf="weatherData">
+    <div class="weather-data" *ngIf="weatherData">
       <h1 class="temp">{{ weatherData.main.temp | number : "1.0-0" }}&#176;</h1>
       <div class="city-time">
         <h1 class="name">{{ weatherData.name }}</h1>
