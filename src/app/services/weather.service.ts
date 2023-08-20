@@ -19,7 +19,7 @@ export class WeatherService {
   }
 
   getTime(lat:string,long:string): Observable<DateTime> {
-    return this.http.get<DateTime>(`/api/Time/current/coordinate?latitude=${lat}&longitude=${long}`)
+    return this.http.get<DateTime>(`https://thingproxy.freeboard.io/fetch/https://timeapi.io/api/Time/current/coordinate?latitude=${lat}&longitude=${long}`)
   }
 
 }
