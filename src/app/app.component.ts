@@ -57,7 +57,6 @@ export class AppComponent implements OnInit{
         this.getMonthName(this.dateTime.month);
         this.time = this.timeFormater(this.dateTime.hour, this.dateTime.minute);
         this.checkDay();
-        this.getImageUrl(this.description!.icon);
         console.log(response);
       }
     });
@@ -82,6 +81,7 @@ export class AppComponent implements OnInit{
         this.description = response.weather[0];
         this.lat = String(response.coord.lat);
         this.long = String(response.coord.lon);
+        this.getImageUrl(this.description!.icon);
         this.onGetTime(this.lat,this.long);
         this.unixSunrise = new Date(this.weatherData.sys.sunrise * 1000);
         this.unixSunset = new Date(this.weatherData.sys.sunset * 1000);
